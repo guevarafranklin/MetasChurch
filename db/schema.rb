@@ -10,7 +10,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2024_12_22_154121) do
+ActiveRecord::Schema[8.0].define(version: 2024_12_22_182527) do
+  create_table "bautismos_conversos", force: :cascade do |t|
+    t.string "name"
+    t.string "gender"
+    t.integer "age"
+    t.integer "attendande"
+    t.date "bautism_date"
+    t.date "confirmation_date"
+    t.integer "unidads_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["unidads_id"], name: "index_bautismos_conversos_on_unidads_id"
+  end
+
   create_table "dashboards", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -31,11 +44,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_22_154121) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "units", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "users", force: :cascade do |t|
     t.string "email_address", null: false
     t.string "password_digest", null: false
@@ -44,5 +52,6 @@ ActiveRecord::Schema[8.0].define(version: 2024_12_22_154121) do
     t.index ["email_address"], name: "index_users_on_email_address", unique: true
   end
 
+  add_foreign_key "bautismos_conversos", "unidads", column: "unidads_id"
   add_foreign_key "sessions", "users"
 end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :bautismos_conversos
   resources :dashboards
   resources :units
   resource :session

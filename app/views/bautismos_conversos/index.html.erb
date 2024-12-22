@@ -1,0 +1,21 @@
+<div class="w-full">
+  <% if notice.present? %>
+    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
+  <% end %>
+
+  <% content_for :title, "Bautismos conversos" %>
+
+  <div class="flex justify-between items-center">
+    <h1 class="font-bold text-4xl">Bautismos de conversos</h1>
+    <%= link_to "Agregar  Meta de Conversos", new_bautismos_converso_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+  </div>
+
+  <div id="bautismos_conversos" class="min-w-full">
+    <% @bautismos_conversos.each do |bautismos_converso| %>
+      <%= render bautismos_converso %>
+      <p>
+        <%= link_to "Show this bautismos converso", bautismos_converso, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+      </p>
+    <% end %>
+  </div>
+</div>
